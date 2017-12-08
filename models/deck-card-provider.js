@@ -4,7 +4,7 @@ export default class CarsModel {
 
     getData = () => {
         let cards = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
-        let suits = ['Heart', 'Diamond', 'Club', 'Spade'];
+        let suits = ['♥', '♦', '♣', '♠'];
         suits.forEach(suit => {
             cards.forEach(card => {
                 if ((card > 10) || card === 1) {
@@ -53,12 +53,12 @@ export default class CarsModel {
     }
 
     getAllSuite = () => {
-        return ['Heart', 'Diamond', 'Club', 'Spade'];
+        return ['♥', '♦', '♣', '♠'];
     };
 
 
     remremoveTopCard = () => {
-        this.deckCards = this.deckCards.splice(0, 1);
+        this.deckCards.splice(this.deckCards.length - 1, 1);
         console.log(this.deckCards);
     };
 
