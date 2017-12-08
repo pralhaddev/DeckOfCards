@@ -1,11 +1,9 @@
 span.label=payingCards.length
 
+ 
  #playingCards
-    -each suit in suites
-        h4.label=suit
-        - each card in payingCards
-          if card.suit == suit
-           span.label=card.card
+  - each card in payingCards
+           span.label=" " + card.suit + card.card
 div
     a(href="/removeCard")!= "Remove Card"
 div

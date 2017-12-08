@@ -35,15 +35,18 @@ export default class CarsModel {
             }
         }
     };
-    shuffleCards = () => {
-        for (var i = 0; i < this.deckCards.length; i++) {
-            var j = i;
-            while (j == i) {
-                j = Math.floor(Math.random() * this.deckCards.length);
-            }
-            var tmp = this.deckCards[i];
-            this.deckCards[i] = this.deckCards[j];
-            this.deckCards[j] = tmp;
+
+
+    getRandomInt = (min,max) => {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    shuffleCards = (shuffleCnt) => {
+        for (let i = 0; i < shuffleCnt; i++) {
+          var rndNo = this.getRandomInt(1, 52);
+            var card = this.deckCards[i];
+            this.deckCards[i] = this.deckCards[rndNo];
+            this.deckCards[rndNo] = card;
         }
     }
     removeCardFromDeck = (cardInfomation) => {

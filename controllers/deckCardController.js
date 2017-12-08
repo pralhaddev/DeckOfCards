@@ -29,7 +29,7 @@ export default class DeckCardController {
     suffleCards = () => {
         try {
             logger.info('getting all suites...');
-            return this.deckDataProviderInstance.shuffleCards();
+            return this.deckDataProviderInstance.shuffleCards(this.deckDataProviderInstance.getRandomInt(10, 25));
         }
         catch (err) {
             logger.error('Error in getting all cards- ' + err);
