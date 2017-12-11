@@ -12,10 +12,16 @@ block content
             div
                 div
                     span.label Suite :
-                    input(type="text", name="suite", id="editEmployeeTitle")
+                    select(name="suite" id="suit" style="width:200px;margin-left:16px;float:left;")
+                      each val in suits
+                       option #{val}
                 div
                     span.label Card :
-                    input(type="text", name="card", id="editEmployeeName")
+                    select(name="card" id="suit" style="width:200px;margin-left:16px;float:left;")
+                      each val in cards
+                       option #{val}
+
+
                 div#editEmployeeSubmit
                     input(type="submit", value="Save")
         a(href="/")!= "Back to DeckCard List"

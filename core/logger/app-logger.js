@@ -1,7 +1,8 @@
-import * as winston from 'winston'
-import * as rotate from 'winston-daily-rotate-file'
-import config from '../config/config.dev'
+import * as winston from 'winston';
+import * as rotate from 'winston-daily-rotate-file';
 import * as fs from 'fs';
+import config from '../config/config.dev';
+
 
 const dir = config.logFileDir;
 
@@ -10,7 +11,7 @@ if (!fs.existsSync(dir)) {
 }
 
 
-let logger = new winston.Logger({
+const logger = new winston.Logger({
     level: 'info',
     transports: [
         new (winston.transports.Console)({
@@ -19,11 +20,11 @@ let logger = new winston.Logger({
         new winston.transports.DailyRotateFile({
             filename: config.logFileName,
             dirname: config.logFileDir,
-            maxsize: 20971520, //20MB
+            maxsize: 20971520,
             maxFiles: 25,
-            datePattern: '.dd-MM-yyyy'
-        })
-    ]
+            datePattern: '.dd-MM-yyyy',
+        }),
+    ],
 });
 
 export default logger;
