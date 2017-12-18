@@ -4,6 +4,7 @@ import request from 'supertest-as-promised';
 import app from '../server';
 
 describe('# Should load main page', () => {
+
     it('Should load page with Generate new Deck link and should show deck is empty', () => {
         request(app)
             .get('/')
@@ -18,6 +19,7 @@ describe('# Should load main page', () => {
 
 
 describe('# Should load deck of cards page', () => {
+
     it('Should load page with deck of cards with Remove,Shuffle,Remove Top card link exists', () => {
         request(app)
             .get('/generateDeck')
@@ -27,6 +29,21 @@ describe('# Should load deck of cards page', () => {
                 expect(res.text, 'Check Shuffle Card Link Exists').to.include('<a href="/shuffleCard">Shuffle Card</a>');
                 expect(res.text, 'Check Remove Top Card Link Exists').to.include('<a href="/removeTopCard">Remove Top Card</a>');
                 expect(res.text, 'Check Card exists').to.include('<span class="label">');
+            });
+    });
+});
+
+
+describe('# Should load remove cards page', () => {
+
+    it('Should load page with dashboard having option to remove card from deck', () => {
+        request(app)
+            .get('/removeCard')
+            .expect('Content-Type', /html/)
+            .then((res) => {
+                expect(res.text, 'Check Suite selection list Exists').to.include('<span class="label">Suite :</span>');
+                expect(res.text, 'Check Card selection list Exists').to.include('<span class="label">Card :</span>');
+                expect(res.text, 'Check Remove Card Link Exists').to.include('<input type="submit" value="Save">');
             });
     });
 });

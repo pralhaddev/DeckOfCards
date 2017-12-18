@@ -71,8 +71,10 @@ app.get('/removeTopCard', (req, res) => {
   res.redirect('/updatedDeck');
 });
 
-app.listen(port, () => {
-  logger.info('server started - ', port);
-});
-export default app;
+if(!module.parent) {
+  app.listen(port, () => {
+    logger.info('server started - ', port);
+  });
+}
 
+export default app;
